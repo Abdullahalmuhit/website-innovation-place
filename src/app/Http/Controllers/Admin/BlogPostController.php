@@ -3,6 +3,7 @@ namespace App\Http\Controllers\Admin;
 
 use App\Http\Controllers\Controller;
 use App\Models\BlogPost;
+use App\Models\Category;
 use Illuminate\Http\Request;
 use Illuminate\Support\Str;
 use Illuminate\Support\Facades\Storage; // make sure to import this
@@ -18,7 +19,8 @@ class BlogPostController extends Controller
 
     public function create()
     {
-        return view('admin.blog.create');
+        $data['categories'] = Category::where('active', 1)->get();
+        return view('admin.blog.create', $data);
     }
 
     public function store(Request $request)
@@ -27,7 +29,7 @@ class BlogPostController extends Controller
             'title' => 'required|string|max:255',
             'excerpt' => 'required|string|max:500',
             'content' => 'required|string',
-            'category' => 'required|string|max:100',
+            'category_id' => 'required|max:100',
             'is_published' => 'boolean',
             'featured_image' => 'nullable|image|mimes:jpeg,png,jpg,gif,svg|max:2048',
         ]);
@@ -63,7 +65,7 @@ class BlogPostController extends Controller
             'title' => 'required|string|max:255',
             'excerpt' => 'required|string|max:500',
             'content' => 'required|string',
-            'category' => 'required|string|max:100',
+            'category_id' => 'required|max:100',
             'is_published' => 'boolean',
         ]);
 
