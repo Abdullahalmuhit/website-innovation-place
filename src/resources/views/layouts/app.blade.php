@@ -73,10 +73,10 @@
         <div class="flex items-center justify-between h-20">
             <div class="flex-shrink-0">
                 <a href="{{ route('home') }}" class="flex items-center space-x-3 text-3xl font-bold text-gray-900 tracking-wider">
-                    <img src="{{ asset('assets/img/logo/inno-logo_blue.png') }}" alt="Innovation Place BD Logo" class="h-10 w-auto">
-                    <span>
-                            <span class="text-primary">Innovation</span> Place BD
-                        </span>
+                    <img src="{{ asset('assets/img/logo/inno-logo_blue.png') }}" alt="Innovation Place BD Limited Logo" class="h-10 w-auto">
+                        <div class="text-xl">
+                            <span class="text-primary">Innovation</span> Place BD Limited
+                        </div>
                 </a>
             </div>
 

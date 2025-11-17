@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>@yield('title', 'Admin Panel') - Innovation Place BD</title>
+    <title>@yield('title', 'Admin Panel') - Innovation Place BD Limited</title>
     <script src="https://cdn.tailwindcss.com"></script>
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
     <script>
@@ -25,7 +25,7 @@
     <aside class="w-64 bg-gradient-to-b from-indigo-900 to-indigo-800 text-white flex-shrink-0">
         <div class="p-6 border-b border-indigo-700">
             <h1 class="text-2xl font-bold">Admin Panel</h1>
-            <p class="text-indigo-300 text-sm mt-1">Innovation Place BD</p>
+            <p class="text-indigo-300 text-sm mt-1">Innovation Place BD Limited</p>
         </div>
 
         <nav class="p-4 space-y-2">
