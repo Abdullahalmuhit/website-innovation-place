@@ -17,7 +17,7 @@ class BlogPost extends Model
         'slug',
         'excerpt',
         'content',
-        'category',
+        'category_id',
         'featured_image',
         'is_published',
         'published_at'
@@ -58,6 +58,20 @@ class BlogPost extends Model
     public function getImageUrlAttribute()
     {
         return $this->featured_image ? asset('storage/' . $this->featured_image) : null;
+    }
+
+    public function tags()
+    {
+        return $this->belongsToMany(Tag::class, 'blog_tags', 'blog_post_id', 'tag_id');
+    }
+
+    public function category()
+    {
+        return $this->belongsTo(Category::class);
+    }
+    public function categoryName()
+    {
+        return $this->category ? $this->category->name : null;
     }
 
 

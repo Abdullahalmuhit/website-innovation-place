@@ -157,7 +157,6 @@
                             <p class="text-3xl font-bold text-gray-900">Global</p>
                             <p class="text-gray-600">Client Reach</p>
                         </div>
-
                     </div>
                 </div>
             </div>
@@ -215,12 +214,12 @@
 
             <div class="grid grid-cols-1 md:grid-cols-3 gap-8">
                 @foreach($blogs as $blog)
-                    <a href="{{ route('blog.show', $blog) }}" class="block card-bg rounded-xl overflow-hidden shadow-lg border border-gray-200 group">
+                    <a href="{{ route('blog.show', $blog->id) }}" class="block card-bg rounded-xl overflow-hidden shadow-lg border border-gray-200 group">
                         <div>
                             <img src="{{ asset('storage/' . $blog->featured_image) }}" class="h-48 bg-gradient-to-br from-primary to-indigo-300 flex items-center justify-center" >
                         </div>
                         <div class="p-6">
-                            <span class="text-sm text-primary font-medium">{{ $blog->category }}</span>
+                            <span class="text-sm text-primary font-medium">{{ $blog->category->name }}</span>
                             <h3 class="text-xl font-semibold text-gray-900 mt-2 group-hover:text-primary transition duration-300">{{ $blog->title }}</h3>
                             <p class="text-gray-600 mt-3 text-sm">{{ Str::limit($blog->excerpt, 100) }}</p>
                             <div class="mt-4 text-sm text-gray-500">

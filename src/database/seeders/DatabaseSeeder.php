@@ -1,6 +1,7 @@
 <?php
 namespace Database\Seeders;
 
+use App\Models\Category;
 use Illuminate\Database\Seeder;
 use App\Models\Service;
 use App\Models\TeamMember;
@@ -10,7 +11,16 @@ class DatabaseSeeder extends Seeder
 {
     public function run()
     {
+        $this->call([
+            CategorySeeder::class,
+            TagSeeder::class,
+            AdminUserSeeder::class,
+        ]);
         // Services
+        $tech = Category::where('slug', 'technology')->first();
+        $dev  = Category::where('slug', 'development')->first();
+        $design = Category::where('slug', 'design')->first();
+
         Service::create([
             'title' => 'Custom Software Development',
             'description' => 'Tailored solutions built with cutting-edge technologies to meet your unique business needs.',
@@ -75,10 +85,10 @@ class DatabaseSeeder extends Seeder
         // Blog Posts
         BlogPost::create([
             'title' => 'The Future of AI in Bangladesh',
+            'category_id' => $tech->id,
             'slug' => 'future-of-ai-in-bangladesh',
             'excerpt' => 'Exploring how artificial intelligence is transforming local businesses.',
             'content' => 'Full article content here...',
-            'category' => 'Technology',
             'is_published' => true,
             'published_at' => now()
         ]);
@@ -88,7 +98,7 @@ class DatabaseSeeder extends Seeder
             'slug' => 'laravel-best-practices-2025',
             'excerpt' => 'Essential coding standards for building scalable Laravel applications.',
             'content' => 'Full article content here...',
-            'category' => 'Development',
+            'category_id' => $dev->id,
             'is_published' => true,
             'published_at' => now()->subDays(5)
         ]);
@@ -98,9 +108,16 @@ class DatabaseSeeder extends Seeder
             'slug' => 'mobile-first-design-strategy',
             'excerpt' => 'Why mobile-first approach is critical for success in Bangladesh.',
             'content' => 'Full article content here...',
-            'category' => 'Design',
+            'category_id' => $design->id,
             'is_published' => true,
             'published_at' => now()->subDays(18)
         ]);
+
+        $this->call([
+            BlogTagSeeder::class,
+        ]);
+
+
     }
 }
+
