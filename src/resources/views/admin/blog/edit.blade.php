@@ -20,13 +20,16 @@
 
                 <div>
                     <label class="block text-sm font-medium text-gray-700 mb-2">Category *</label>
-                    <select name="category" required
+                    <select name="category_id" required
                             class="w-full px-4 py-3 border border-gray-300 rounded-lg focus:ring-2 focus:ring-primary focus:border-transparent">
                         <option value="">Select Category</option>
-                        <option value="Technology" {{$post->category == 'Technology' ? 'selected' : '' }}>Technology</option>
+                        @foreach($categories as $category)
+                            <option value={{$category->id}}  {{$post->category_id == $category->id ? 'selected' : '' }}>{{$category->name}}</option>
+                        @endforeach
+                        {{--<option value="Technology" {{$post->category == 'Technology' ? 'selected' : '' }}>Technology</option>
                         <option value="Development" {{ $post->category == 'Development' ? 'selected' : '' }}>Development</option>
                         <option value="Design" {{ $post->category == 'Design' ? 'selected' : '' }}>Design</option>
-                        <option value="Business" {{ $post->category == 'Business' ? 'selected' : '' }}>Business</option>
+                        <option value="Business" {{ $post->category == 'Business' ? 'selected' : '' }}>Business</option>--}}
                     </select>
                     @error('category')<p class="text-red-600 text-sm mt-1">{{ $message }}</p>@enderror
                 </div>
