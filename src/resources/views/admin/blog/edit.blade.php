@@ -63,6 +63,16 @@
                     @error('content')<p class="text-red-600 text-sm mt-1">{{ $message }}</p>@enderror
                 </div>
 
+                <select id="tags" name="tag_id[]" multiple
+                        class="w-full px-4 py-3 border border-gray-300 rounded-lg focus:ring-2 focus:ring-primary focus:border-transparent bg-white text-gray-700">
+                    @foreach($tags as $tag)
+                        <option value="{{ $tag->id }}"
+                            {{ in_array($tag->id, old('tag_id', $selectedTagIds ?? [])) ? 'selected' : '' }}>
+                            {{ $tag->name }}
+                        </option>
+                    @endforeach
+                </select>
+
                 <div class="flex items-center">
                     <input type="checkbox" name="is_published" id="is_published" value="1" {{ $post->is_published ? 'checked' : '' }}
                     class="w-5 h-5 text-primary border-gray-300 rounded focus:ring-primary">
@@ -81,3 +91,12 @@
         </form>
     </div>
 @endsection
+<script>
+    document.addEventListener('DOMContentLoaded', function () {
+        new Choices('#tags', {
+            removeItemButton: true,
+            placeholderValue: 'Select tags...',
+            searchPlaceholderValue: 'Search tags'
+        });
+    });
+</script>

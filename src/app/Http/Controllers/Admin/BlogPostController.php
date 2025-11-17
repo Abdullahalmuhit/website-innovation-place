@@ -3,7 +3,9 @@ namespace App\Http\Controllers\Admin;
 
 use App\Http\Controllers\Controller;
 use App\Models\BlogPost;
+use App\Models\BlogTag;
 use App\Models\Category;
+use App\Models\Tag;
 use Illuminate\Http\Request;
 use Illuminate\Support\Str;
 use Illuminate\Support\Facades\Storage; // make sure to import this
@@ -20,6 +22,7 @@ class BlogPostController extends Controller
     public function create()
     {
         $data['categories'] = Category::where('active', 1)->get();
+        $data['tags'] = Tag::where('active', 1)->get();
         return view('admin.blog.create', $data);
     }
 
@@ -30,9 +33,12 @@ class BlogPostController extends Controller
             'excerpt' => 'required|string|max:500',
             'content' => 'required|string',
             'category_id' => 'required|max:100',
+            'tag_id' => 'required|array',          // Validate tags as an array
+            'tag_id.*' => 'exists:tags,id',        // Each tag must exist
             'is_published' => 'boolean',
             'featured_image' => 'nullable|image|mimes:jpeg,png,jpg,gif,svg|max:2048',
         ]);
+
 
         $validated['slug'] = Str::slug($validated['title']);
 
@@ -45,9 +51,14 @@ class BlogPostController extends Controller
             $validated['featured_image'] = $path;
         }
 
+        $blogPost = BlogPost::create($validated);
 
-
-        BlogPost::create($validated);
+        foreach ($request->tag_id as $tagId) {
+            BlogTag::create([
+                'blog_post_id' => $blogPost->id,
+                'tag_id' => $tagId,
+            ]);
+        }
 
         return redirect()->route('admin.blog.index')
             ->with('success', 'Blog post created successfully');
@@ -57,6 +68,8 @@ class BlogPostController extends Controller
     {
         $data['categories'] = Category::where('active', 1)->get();
         $data['post']  = BlogPost::find($id);
+        $data['tags'] = Tag::where('active', 1)->get();
+        $data['selectedTagIds'] = BlogTag::where('blog_post_id', $id)->pluck('tag_id')->toArray();
         return view('admin.blog.edit', $data);
     }
 
@@ -68,6 +81,8 @@ class BlogPostController extends Controller
             'excerpt' => 'required|string|max:500',
             'content' => 'required|string',
             'category_id' => 'required|max:100',
+            'tag_id' => 'required|array',
+            'tag_id.*' => 'exists:tags,id',
             'is_published' => 'boolean',
         ]);
 
@@ -88,6 +103,15 @@ class BlogPostController extends Controller
         }
 
         $post->update($validated);
+
+        BlogTag::where('blog_post_id', $post->id)->delete();
+
+        foreach ($request->tag_id as $tagId) {
+            BlogTag::create([
+                'blog_post_id' => $post->id,
+                'tag_id' => $tagId,
+            ]);
+        }
 
         return redirect()->route('admin.blog.index')
             ->with('success', 'Blog post updated successfully');
