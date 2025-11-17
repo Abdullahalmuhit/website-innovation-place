@@ -55,12 +55,14 @@ class BlogPostController extends Controller
 
     public function edit($id)
     {
-        $post = BlogPost::find($id);
-        return view('admin.blog.edit', compact('post'));
+        $data['categories'] = Category::where('active', 1)->get();
+        $data['post']  = BlogPost::find($id);
+        return view('admin.blog.edit', $data);
     }
 
     public function update(Request $request, $id)
     {
+
         $validated = $request->validate([
             'title' => 'required|string|max:255',
             'excerpt' => 'required|string|max:500',
