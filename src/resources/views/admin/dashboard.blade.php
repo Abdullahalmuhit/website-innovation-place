@@ -110,7 +110,7 @@
                                     <span class="bg-gray-100 text-gray-600 text-xs px-2 py-1 rounded-full">Draft</span>
                                 @endif
                             </div>
-                            <p class="text-sm text-gray-600">{{ $post->category }}</p>
+                            <p class="text-sm text-gray-600">{{ $post->category->name }}</p>
                             <p class="text-xs text-gray-500 mt-1">{{ $post->created_at->diffForHumans() }}</p>
                         </div>
                     </div>

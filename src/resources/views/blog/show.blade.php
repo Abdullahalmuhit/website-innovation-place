@@ -28,7 +28,7 @@
             <div class="absolute inset-0 flex items-center justify-center">
                 <div class="text-center text-white px-4">
                     <a href="{{ route('blog.category', $blog->category) }}" class="inline-block bg-white/20 backdrop-blur-sm border border-white/30 px-6 py-2 rounded-full text-sm font-bold mb-6 hover:bg-white/30 transition">
-                        {{ $blog->category }}
+                        {{ $blog->category->name }}
                     </a>
                     <h1 class="text-4xl md:text-5xl font-extrabold mb-6 leading-tight">{{ $blog->title }}</h1>
 
@@ -136,7 +136,7 @@
                     </span>
                         <span class="px-4 py-2 bg-gray-100 hover:bg-primary hover:text-white rounded-full text-sm font-medium text-gray-700 cursor-pointer transition">Laravel</span>
                         <span class="px-4 py-2 bg-gray-100 hover:bg-primary hover:text-white rounded-full text-sm font-medium text-gray-700 cursor-pointer transition">PHP</span>
-                        <span class="px-4 py-2 bg-gray-100 hover:bg-primary hover:text-white rounded-full text-sm font-medium text-gray-700 cursor-pointer transition">{{ $blog->category }}</span>
+                        <span class="px-4 py-2 bg-gray-100 hover:bg-primary hover:text-white rounded-full text-sm font-medium text-gray-700 cursor-pointer transition">{{ $blog->category->name }}</span>
                     </div>
                 </div>
 

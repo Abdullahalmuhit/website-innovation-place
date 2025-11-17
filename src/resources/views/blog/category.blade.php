@@ -1,11 +1,11 @@
 @extends('layouts.app')
 
-@section('title', $category . ' - Blog - Innovation Place BD Limited')
+@section('title', $category->name . ' - Blog - Innovation Place BD Limited')
 
 @section('content')
     <div class="bg-gradient-to-r from-blue-600 to-purple-600 py-20">
         <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 text-center text-white">
-            <h1 class="text-5xl font-bold mb-4">{{ $category }}</h1>
+            <h1 class="text-5xl font-bold mb-4">{{ $category->name }}</h1>
             <p class="text-xl">Browse all articles in this category</p>
         </div>
     </div>
@@ -26,17 +26,17 @@
                     <div class="p-6">
                         <div class="flex items-center space-x-2 mb-3">
                     <span class="bg-blue-100 text-blue-600 px-3 py-1 rounded-full text-xs font-medium">
-                        {{ $blog->category }}
+                        {{ $blog->category->name }}
                     </span>
                             <span class="text-gray-500 text-sm">
                         {{ $blog->published_at->format('M d, Y') }}
                     </span>
                         </div>
                         <h2 class="text-2xl font-bold text-gray-900 mb-3 hover:text-blue-600">
-                            <a href="{{ route('blog.show', $blog) }}">{{ $blog->title }}</a>
+                            <a href="{{ route('blog.show', $blog->id) }}">{{ $blog->title }}</a>
                         </h2>
                         <p class="text-gray-600 mb-4">{{ $blog->excerpt }}</p>
-                        <a href="{{ route('blog.show', $blog) }}" class="text-blue-600 font-medium hover:underline inline-flex items-center">
+                        <a href="{{ route('blog.show', $blog->category_id) }}" class="text-blue-600 font-medium hover:underline inline-flex items-center">
                             Read More <i class="fas fa-arrow-right ml-2"></i>
                         </a>
                     </div>

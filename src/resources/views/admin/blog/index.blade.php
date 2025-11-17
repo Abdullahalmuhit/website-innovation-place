@@ -30,7 +30,7 @@
                         <div class="text-sm text-gray-600">{{ Str::limit($post->excerpt, 60) }}</div>
                     </td>
                     <td class="px-6 py-4">
-                        <span class="bg-purple-100 text-purple-600 px-3 py-1 rounded-full text-sm">{{ $post->category }}</span>
+                        <span class="bg-purple-100 text-purple-600 px-3 py-1 rounded-full text-sm">{{ $post->category->name }}</span>
                     </td>
                     <td class="px-6 py-4">
                         @if($post->is_published)
@@ -44,7 +44,7 @@
                     </td>
                     <td class="px-6 py-4 text-right space-x-2">
                         @if($post->is_published)
-                            <a href="{{ route('blog.show', $post) }}" target="_blank" class="text-green-600 hover:text-green-800">
+                            <a href="{{ route('blog.show', $post->id) }}" target="_blank" class="text-green-600 hover:text-green-800">
                                 <i class="fas fa-eye"></i>
                             </a>
                         @endif

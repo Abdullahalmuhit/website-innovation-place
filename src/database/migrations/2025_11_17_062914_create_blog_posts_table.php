@@ -13,15 +13,15 @@ return new class extends Migration
     {
         Schema::create('blog_posts', function (Blueprint $table) {
             $table->id();
+            $table->foreignId('category_id')->constrained('categories')->onDelete('cascade');
             $table->string('title');
             $table->string('slug')->unique();
             $table->text('excerpt');
             $table->longText('content');
-            $table->string('category');
             $table->string('featured_image')->nullable();
             $table->boolean('is_published')->default(false);
             $table->timestamp('published_at')->nullable();
-            $table->timestamps();
+            $table->timestamps(); // ✅ missing
         });
     }
 
