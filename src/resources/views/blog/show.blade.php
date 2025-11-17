@@ -225,11 +225,10 @@
                         <article class="group bg-white rounded-2xl shadow-lg overflow-hidden hover:shadow-2xl transition-all transform hover:-translate-y-2">
                             <div class="relative h-56 bg-gradient-to-br from-blue-400 via-purple-500 to-pink-500 overflow-hidden">
                                 <div class="absolute inset-0 flex items-center justify-center">
-                                    <i class="fas fa-{{ $related->category == 'Technology' ? 'microchip' : ($related->category == 'Development' ? 'code' : 'paint-brush') }} text-7xl text-white opacity-30 group-hover:scale-125 transition-transform duration-500"></i>
-                                </div>
+                                    <img src="{{ asset('storage/' . $blog->featured_image) }}" alt="Featured Image">                                </div>
                                 <div class="absolute top-4 left-4">
                         <span class="bg-white/90 backdrop-blur-sm text-primary px-4 py-2 rounded-full text-xs font-bold">
-                            {{ $related->category }}
+                            {{ $related->category->name }}
                         </span>
                                 </div>
                             </div>
@@ -239,7 +238,7 @@
                                     {{ $related->published_at->format('M d, Y') }}
                                 </div>
                                 <h3 class="text-xl font-bold text-gray-900 mb-3 group-hover:text-primary transition">
-                                    <a href="{{ route('blog.show', $related) }}">{{ $related->title }}</a>
+                                    <a href="{{ route('blog.show', $related->id) }}">{{ $related->title }}</a>
                                 </h3>
                                 <p class="text-gray-600 mb-4 line-clamp-3">{{ Str::limit($related->excerpt, 120) }}</p>
                                 <a href="{{ route('blog.show', $related) }}" class="inline-flex items-center text-primary font-semibold hover:gap-3 gap-2 transition-all group">
