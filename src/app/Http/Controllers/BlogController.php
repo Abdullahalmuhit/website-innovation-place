@@ -12,9 +12,7 @@ class BlogController extends Controller
     public function index()
     {
         $blogs = BlogPost::published()->paginate(9);
-        $categories = BlogPost::where('is_published', true)
-            ->whereNotNull('published_at')
-            ->with('category')->get();
+        $categories = Category::where('active', 1)->get();
 
         return view('blog.index', compact('blogs', 'categories'));
     }
