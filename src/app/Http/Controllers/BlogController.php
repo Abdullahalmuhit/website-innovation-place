@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 
+use App\Models\BlogTag;
 use App\Models\Category;
 use Illuminate\Http\Request;
 use App\Models\BlogPost;
@@ -29,8 +30,9 @@ class BlogController extends Controller
             ->where('id', '!=', $blog->id)
             ->take(3)
             ->get();
+        $blogTags = BlogTag::where('blog_post_id', $blog->id)->with('tag')->get();
 
-        return view('blog.show', compact('blog', 'relatedPosts'));
+        return view('blog.show', compact('blog', 'relatedPosts', 'blogTags'));
     }
 
     public function category($id)

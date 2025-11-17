@@ -134,8 +134,9 @@
                         <i class="fas fa-tags mr-2 text-primary"></i>
                         Tags:
                     </span>
-                        <span class="px-4 py-2 bg-gray-100 hover:bg-primary hover:text-white rounded-full text-sm font-medium text-gray-700 cursor-pointer transition">Laravel</span>
-                        <span class="px-4 py-2 bg-gray-100 hover:bg-primary hover:text-white rounded-full text-sm font-medium text-gray-700 cursor-pointer transition">PHP</span>
+                        @foreach($blogTags as $tag)
+                            <span class="px-4 py-2 bg-gray-100 hover:bg-primary hover:text-white rounded-full text-sm font-medium text-gray-700 cursor-pointer transition">{{$tag->tag->name}}</span>
+                        @endforeach
                         <span class="px-4 py-2 bg-gray-100 hover:bg-primary hover:text-white rounded-full text-sm font-medium text-gray-700 cursor-pointer transition">{{ $blog->category->name }}</span>
                     </div>
                 </div>
