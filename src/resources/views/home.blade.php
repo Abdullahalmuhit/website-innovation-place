@@ -261,14 +261,15 @@
                             <i class="fas fa-phone text-2xl text-primary flex-shrink-0 mt-1"></i>
                             <div>
                                 <p class="text-gray-900 font-semibold">Call Us</p>
-                                <p class="text-gray-700">+880 1XXXXXXXXX</p>
+                                <p class="text-gray-700">+88 01731146077</p>
                             </div>
                         </div>
                         <div class="flex items-start space-x-4">
                             <i class="fas fa-map-marker-alt text-2xl text-primary flex-shrink-0 mt-1"></i>
                             <div>
                                 <p class="text-gray-900 font-semibold">Our Office</p>
-                                <p class="text-gray-700">Dhaka, Bangladesh</p>
+                                <p class="text-gray-700">House: B/ 151, Road No: 22
+                                    Mohakhali DOHS, Dhaka- 1213, Bangladesh</p>
                             </div>
                         </div>
                     </div>
