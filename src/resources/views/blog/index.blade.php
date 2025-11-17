@@ -126,7 +126,7 @@
                     </div>
                     <div class="space-y-3">
                         @foreach($categories as $category)
-                            <a href="{{ route('blog.category', $category->category->name) }}" class="flex items-center justify-between px-4 py-3 rounded-xl hover:bg-primary/5 text-gray-700 hover:text-primary transition group">
+                            <a href="{{ route('blog.category', $category->category->id) }}" class="flex items-center justify-between px-4 py-3 rounded-xl hover:bg-primary/5 text-gray-700 hover:text-primary transition group">
                         <span class="font-medium flex items-center">
                             <i class="fas fa-tag mr-3 text-primary/50 group-hover:text-primary transition"></i>
                             {{ $category->category->name }}
