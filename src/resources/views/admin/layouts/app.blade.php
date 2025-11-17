@@ -7,6 +7,8 @@
     <script src="https://cdn.tailwindcss.com"></script>
     <link rel="icon" href="{{ asset('assets/img/logo/inno-logo_blue.png') }}">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/choices.js/public/assets/styles/choices.min.css" />
+
     <script>
         tailwind.config = {
             theme: {
@@ -115,6 +117,7 @@
         </main>
     </div>
 </div>
+<script src="https://cdn.jsdelivr.net/npm/choices.js/public/assets/scripts/choices.min.js"></script>
 
 @stack('scripts')
 </body>

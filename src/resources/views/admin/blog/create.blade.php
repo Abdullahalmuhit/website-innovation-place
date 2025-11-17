@@ -24,9 +24,6 @@
                         @foreach($categories as $category)
                             <option value={{$category->id}} {{ old($category->id) == $category->id ? 'selected' : '' }}>{{$category->name}}</option>
                         @endforeach
-                     {{--   <option value="Development" {{ old('category') == 'Development' ? 'selected' : '' }}>Development</option>
-                        <option value="Design" {{ old('category') == 'Design' ? 'selected' : '' }}>Design</option>
-                        <option value="Business" {{ old('category') == 'Business' ? 'selected' : '' }}>Business</option>--}}
                     </select>
                     @error('category')<p class="text-red-600 text-sm mt-1">{{ $message }}</p>@enderror
                 </div>
@@ -61,6 +58,17 @@
                     @error('content')<p class="text-red-600 text-sm mt-1">{{ $message }}</p>@enderror
                 </div>
 
+                <div>
+                    <label class="block text-sm font-medium text-gray-700 mb-2">Tags *</label>
+                    <select id="tags" name="tag_id[]" multiple
+                            class="w-full px-4 py-3 border border-gray-300 rounded-lg focus:ring-2 focus:ring-primary focus:border-transparent bg-white text-gray-700">
+                        @foreach($tags as $tag)
+                            <option value="{{ $tag->id }}" {{ (collect(old('tag_id'))->contains($tag->id)) ? 'selected' : '' }}>{{ $tag->name }}</option>
+                        @endforeach
+                    </select>
+                    @error('tag_id')<p class="text-red-600 text-sm mt-1">{{ $message }}</p>@enderror
+                </div>
+
                 <div class="flex items-center">
                     <input type="checkbox" name="is_published" id="is_published" value="1" {{ old('is_published') ? 'checked' : '' }}
                     class="w-5 h-5 text-primary border-gray-300 rounded focus:ring-primary">
@@ -79,3 +87,12 @@
         </form>
     </div>
 @endsection
+<script>
+    document.addEventListener('DOMContentLoaded', function () {
+        new Choices('#tags', {
+            removeItemButton: true,
+            placeholderValue: 'Select tags...',
+            searchPlaceholderValue: 'Search tags'
+        });
+    });
+</script>
