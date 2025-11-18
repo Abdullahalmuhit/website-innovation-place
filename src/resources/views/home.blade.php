@@ -72,11 +72,21 @@
         @keyframes fadeInUp {
             from {
                 opacity: 0;
-                transform: translateY(30px);
+                transform: translateY(80px);
             }
             to {
                 opacity: 1;
                 transform: translateY(0);
+            }
+        }
+        @keyframes slideInRight {
+            0% {
+                opacity: 0;
+                transform: translateX(80px);
+            }
+            100% {
+                opacity: 1;
+                transform: translateX(0);
             }
         }
 
@@ -96,10 +106,19 @@
         .animation-delay-600 {
             animation-delay: 0.6s;
         }
+        .animate-slide-right {
+            opacity: 0;
+            transform: translateX(80px);
+        }
+
+        /* active state that performs the animation */
+        .animate-slide-right.is-visible {
+            animation: slideInRight 700ms cubic-bezier(.22,.98,.36,1) forwards;
+        }
     </style>
 
     <!-- Services Section -->
-    <section id="services" class="py-20 md:py-28 bg-white">
+    <section id="services" class="py-20 md:py-28 bg-white animate-slide-right">
         <div class="container mx-auto px-4 sm:px-6 lg:px-8">
             <div class="text-center mb-16">
                 <span class="section-title">Our Services</span>
@@ -108,15 +127,37 @@
 
             <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-10">
                 @foreach($services as $service)
-                    <div class="card-bg p-8 rounded-2xl shadow-lg border border-gray-200">
+                    <div class="card-bg p-8 rounded-2xl shadow-lg border border-gray-200
+                    opacity-0 animate-fade-in-up"
+                         style="animation-delay: {{ $loop->index * 0.2 }}s;">
+
                         <i class="fas fa-{{ $service->icon }} text-5xl text-primary mb-4"></i>
                         <h3 class="text-2xl font-semibold text-gray-900 mb-3">{{ $service->title }}</h3>
                         <p class="text-gray-600">{{ $service->description }}</p>
                     </div>
                 @endforeach
             </div>
+
         </div>
     </section>
+
+    <style>
+        /* simple fade + slide up for each item */
+        @keyframes fadeUp {
+            0%   { opacity: 0; transform: translateY(20px); }
+            100% { opacity: 1; transform: translateY(0); }
+        }
+
+        .stagger-container .stagger-item {
+            opacity: 0;
+            transform: translateY(20px);
+        }
+
+        .stagger-container .stagger-item.is-visible {
+            animation: fadeUp 600ms cubic-bezier(.22,.98,.36,1) forwards;
+        }
+
+    </style>
 
     <!-- About Section -->
     <section id="about" class="py-20 md:py-28 bg-gray-100 border-t border-b border-gray-200">
@@ -135,33 +176,54 @@
                         Learn More About Our Journey
                     </a>
                 </div>
+
                 <div class="lg:w-1/2">
-                    <div class="grid grid-cols-2 gap-6">
-                        <div class="bg-white p-6 rounded-xl shadow-lg border border-primary/20">
+                    <div class="grid grid-cols-2 gap-6 stagger-container" id="about-stats">
+                        <div class="bg-white p-6 rounded-xl shadow-lg border border-primary/20 stagger-item">
                             <i class="fas fa-rocket text-4xl text-primary mb-2"></i>
                             <p class="text-3xl font-bold text-gray-900">5+</p>
                             <p class="text-gray-600">Years in Business</p>
                         </div>
-                        <div class="bg-white p-6 rounded-xl shadow-lg border border-primary/20">
+
+                        <div class="bg-white p-6 rounded-xl shadow-lg border border-primary/20 stagger-item">
                             <i class="fas fa-users text-4xl text-primary mb-2"></i>
                             <p class="text-3xl font-bold text-gray-900">50+</p>
                             <p class="text-gray-600">Successful Projects</p>
                         </div>
-                        <div class="bg-white p-6 rounded-xl shadow-lg border border-primary/20">
+
+                        <div class="bg-white p-6 rounded-xl shadow-lg border border-primary/20 stagger-item">
                             <i class="fab fa-laravel text-4xl text-primary mb-2"></i>
                             <p class="text-3xl font-bold text-gray-900">Laravel</p>
                             <p class="text-gray-600">Primary Backend Stack</p>
                         </div>
-                        <div class="bg-white p-6 rounded-xl shadow-lg border border-primary/20">
+
+                        <div class="bg-white p-6 rounded-xl shadow-lg border border-primary/20 stagger-item">
                             <i class="fas fa-globe text-4xl text-primary mb-2"></i>
                             <p class="text-3xl font-bold text-gray-900">Global</p>
                             <p class="text-gray-600">Client Reach</p>
                         </div>
                     </div>
                 </div>
+
             </div>
         </div>
     </section>
+    <style>
+        @keyframes fadeUpTeam {
+            0% { opacity: 0; transform: translateY(30px); }
+            100% { opacity: 1; transform: translateY(0); }
+        }
+
+        .team-stagger .team-item {
+            opacity: 0;
+            transform: translateY(30px);
+        }
+
+        .team-stagger .team-item.visible {
+            animation: fadeUpTeam 0.8s ease-out forwards;
+        }
+
+    </style>
 
     <!-- Team Section -->
     <section id="team" class="py-20 md:py-28 bg-white">
@@ -171,9 +233,9 @@
                 <p class="text-xl text-gray-700 mt-4">The passionate minds behind Innovation Place BD Limited.</p>
             </div>
 
-            <div class="grid grid-cols-2 md:grid-cols-4 gap-8">
+            <div class="grid grid-cols-2 md:grid-cols-4 gap-8 team-stagger" id="team-grid">
                 @foreach($team as $member)
-                    <div class="text-center p-6 card-bg rounded-xl shadow-lg border border-gray-200">
+                    <div class="text-center p-6 card-bg rounded-xl shadow-lg border border-gray-200 team-item">
                         <div class="w-32 h-32 mx-auto rounded-full bg-gradient-to-br from-primary to-indigo-300 mb-4 overflow-hidden border-4 border-primary/50 flex items-center justify-center text-white text-4xl font-bold">
                             @if($member->image)
                                 <img src="{{ asset('storage/' . $member->image) }}" alt="{{ $member->name }}" class="object-cover w-full h-full">
@@ -201,6 +263,7 @@
                     </div>
                 @endforeach
             </div>
+
         </div>
     </section>
 
@@ -360,6 +423,139 @@
                 submitBtn.disabled = false;
                 submitBtn.textContent = 'Send Message';
             }
+        });
+    </script>
+    <script>
+        document.addEventListener('DOMContentLoaded', function () {
+            const target = document.querySelector('#services');
+            if (!target) return;
+
+            // When link clicked (href="#services") the browser may jump first;
+            // ensure we check visibility after the jump.
+            window.addEventListener('hashchange', () => {
+                if (location.hash === '#services') {
+                    // small delay to allow browser jump
+                    setTimeout(() => triggerAnimation(), 50);
+                }
+            });
+
+            // IntersectionObserver to trigger when visible
+            const observer = new IntersectionObserver((entries) => {
+                entries.forEach(entry => {
+                    if (entry.isIntersecting) {
+                        triggerAnimation();
+                    }
+                });
+            }, {
+                threshold: 0.30,            // small part visible
+                rootMargin: '0px 0px -10% 0px'
+            });
+
+            observer.observe(target);
+
+            function triggerAnimation() {
+                // remove if exists to restart reliably
+                target.classList.remove('is-visible');
+
+                // Force reflow so browser sees class removal (ensures restart)
+                void target.offsetWidth;
+
+                // add back to start animation
+                target.classList.add('is-visible');
+            }
+
+            // Also handle immediate anchor clicks where page already at the section on load
+            if (location.hash === '#services') {
+                setTimeout(() => triggerAnimation(), 100);
+            }
+        });
+    </script>
+
+    <script>
+        document.addEventListener('DOMContentLoaded', function () {
+            const container = document.getElementById('about-stats');
+            if (!container) return;
+
+            const items = Array.from(container.querySelectorAll('.stagger-item'));
+            const STAGGER_MS = 500; // 2 seconds between items
+
+            const observer = new IntersectionObserver((entries) => {
+                entries.forEach(entry => {
+                    if (entry.isIntersecting) {
+                        // start staggered show
+                        triggerStagger();
+                    } else {
+                        // optional: remove visible classes so it can replay when re-entering
+                        items.forEach(it => it.classList.remove('is-visible'));
+                        // clear any pending timeouts
+                        if (container._staggerTimeouts) {
+                            container._staggerTimeouts.forEach(t => clearTimeout(t));
+                            container._staggerTimeouts = null;
+                        }
+                    }
+                });
+            }, { threshold: 0.25 });
+
+            observer.observe(container);
+
+            function triggerStagger() {
+                // clear previous timeouts if any
+                if (container._staggerTimeouts) {
+                    container._staggerTimeouts.forEach(t => clearTimeout(t));
+                }
+                container._staggerTimeouts = [];
+
+                // remove class first so animation will replay cleanly
+                items.forEach(it => it.classList.remove('is-visible'));
+
+                items.forEach((el, i) => {
+                    const t = setTimeout(() => {
+                        el.classList.add('is-visible');
+                    }, i * STAGGER_MS);
+                    container._staggerTimeouts.push(t);
+                });
+            }
+
+            // if the page loads already scrolled to the section, trigger it
+            if (isElementInViewport(container, 0.25)) {
+                // tiny delay to let layout settle
+                setTimeout(() => triggerStagger(), 80);
+            }
+
+            function isElementInViewport(el, threshold=0.5) {
+                const rect = el.getBoundingClientRect();
+                const viewHeight = Math.max(document.documentElement.clientHeight, window.innerHeight);
+                // check that some portion is visible
+                return (rect.top <= viewHeight * (1 - threshold)) && (rect.bottom >= viewHeight * threshold);
+            }
+        });
+    </script>
+
+    <script>
+        document.addEventListener("DOMContentLoaded", function () {
+            const container = document.getElementById("team-grid");
+            const items = container.querySelectorAll(".team-item");
+
+            const observer = new IntersectionObserver((entries) => {
+                entries.forEach(entry => {
+                    if (entry.isIntersecting) {
+
+                        // Reset first so animation replays
+                        items.forEach(item => item.classList.remove("visible"));
+
+                        items.forEach((item, i) => {
+                            setTimeout(() => {
+                                item.classList.add("visible");
+                            }, i * 300); // delay per item (0.3 sec each)
+                        });
+
+                    } else {
+                        items.forEach(item => item.classList.remove("visible"));
+                    }
+                });
+            }, { threshold: 0.2 });
+
+            observer.observe(container);
         });
     </script>
 @endpush

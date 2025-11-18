@@ -53,6 +53,9 @@
         .nav-link:hover {
             color: var(--primary-color);
         }
+        .footer-background-color {
+            background-color: lightseagreen;
+        }
     </style>
     <script>
         tailwind.config = {
@@ -111,7 +114,7 @@
 </main>
 
 <!-- Footer -->
-<footer class="bg-gray-200 border-t border-gray-300 py-10">
+<footer class="border-t  py-10 footer-background-color">
     <div class="container mx-auto px-4 sm:px-6 lg:px-8 text-center">
         <p class="text-xl font-bold text-gray-900 tracking-wider mb-4">
             <span class="text-primary">Innovation</span> Place BD Limited
@@ -127,7 +130,7 @@
                 <i class="fab fa-twitter text-2xl"></i>
             </a>
         </div>
-        <p class="text-sm text-gray-500">
+        <p class="text-sm text-white/90">
             &copy; {{ date('Y') }} Innovation Place BD Limited. All rights reserved.
         </p>
     </div>
