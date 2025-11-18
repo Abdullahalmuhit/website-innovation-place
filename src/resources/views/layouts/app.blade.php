@@ -87,6 +87,7 @@
             <nav class="hidden md:flex space-x-8">
                 <a href="{{ route('home') }}#home" class="nav-link text-gray-700 hover:text-primary transition duration-300">Home</a>
                 <a href="{{ route('home') }}#services" class="nav-link text-gray-700 hover:text-primary transition duration-300">Services</a>
+                <a href="{{ route('home') }}#products" class="nav-link text-gray-700 hover:text-primary transition duration-300">Products</a>
                 <a href="{{ route('home') }}#about" class="nav-link text-gray-700 hover:text-primary transition duration-300">About Us</a>
                 <a href="{{ route('home') }}#team" class="nav-link text-gray-700 hover:text-primary transition duration-300">Team</a>
                 <a href="{{ route('blog.index') }}" class="nav-link text-gray-700 hover:text-primary transition duration-300">Blog</a>
@@ -102,6 +103,7 @@
     <div id="mobile-menu" class="mobile-menu md:hidden bg-white border-t border-gray-200 absolute w-full pb-4 shadow-xl">
         <a href="{{ route('home') }}#home" class="block py-3 px-4 text-gray-700 hover:bg-gray-100 transition duration-150">Home</a>
         <a href="{{ route('home') }}#services" class="block py-3 px-4 text-gray-700 hover:bg-gray-100 transition duration-150">Services</a>
+        <a href="{{ route('home') }}#products" class="block py-3 px-4 text-gray-700 hover:bg-gray-100 transition duration-150">Products</a>
         <a href="{{ route('home') }}#about" class="block py-3 px-4 text-gray-700 hover:bg-gray-100 transition duration-150">About Us</a>
         <a href="{{ route('home') }}#team" class="block py-3 px-4 text-gray-700 hover:bg-gray-100 transition duration-150">Team</a>
         <a href="{{ route('blog.index') }}" class="block py-3 px-4 text-gray-700 hover:bg-gray-100 transition duration-150">Blog</a>

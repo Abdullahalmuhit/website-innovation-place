@@ -141,6 +141,120 @@
         </div>
     </section>
 
+    <!-- Products Section -->
+    <section id="products" class="py-20 md:py-28 bg-gray-50 border-t border-b border-gray-200">
+        <div class="container mx-auto px-4 sm:px-6 lg:px-8">
+
+            <div class="text-center mb-16">
+                <span class="section-title">Our Products</span>
+                <p class="text-xl text-gray-700 mt-4">Powerful digital solutions built for modern education and business.</p>
+            </div>
+
+            <div class="grid grid-cols-1 md:grid-cols-3 gap-10">
+
+                <!-- myClassRoom -->
+                <div class="card-bg p-8 rounded-2xl shadow-lg border border-gray-200
+                        transform hover:scale-105 transition-all duration-300 animate-fade-in-up"
+                     style="animation-delay: 0.1s;">
+                    <div class="text-primary text-5xl mb-4">
+                        <i class="fas fa-chalkboard-teacher"></i>
+                    </div>
+                    <div class="flex items-center gap-2 mb-3">
+                        <h3 class="text-2xl font-semibold text-gray-900">myClassRoom</h3>
+                        <span class="bg-gradient-to-r from-purple-600 to-blue-600 text-white text-xs font-bold px-2.5 py-1 rounded-full">AI-Powered</span>
+                    </div>
+                    <p class="text-gray-600">
+                        A complete AI-integrated Learning Management System (LMS) built for schools, colleges, and universities.
+                        Features intelligent question generation, AI proctoring, personalized student analytics, automated content creation,
+                        and real-time performance tracking for enhanced teaching and learning experiences.
+                    </p>
+                </div>
+
+                <!-- ScholarshHome -->
+                <div class="card-bg p-8 rounded-2xl shadow-lg border border-gray-200
+                        transform hover:scale-105 transition-all duration-300 animate-fade-in-up"
+                     style="animation-delay: 0.2s;">
+                    <div class="text-primary text-5xl mb-4">
+                        <i class="fas fa-school"></i>
+                    </div>
+                    <h3 class="text-2xl font-semibold text-gray-900 mb-3">ScholarsHome</h3>
+                    <p class="text-gray-600">
+                        A smart school management system that manages admission, fees, attendance, exams,
+                        and digital academic operations—all in one platform.
+                    </p>
+                </div>
+
+                <!-- Library Management System -->
+                <div class="card-bg p-8 rounded-2xl shadow-lg border border-gray-200
+                        transform hover:scale-105 transition-all duration-300 animate-fade-in-up"
+                     style="animation-delay: 0.3s;">
+                    <div class="text-primary text-5xl mb-4">
+                        <i class="fas fa-book"></i>
+                    </div>
+                    <h3 class="text-2xl font-semibold text-gray-900 mb-3">Library Management System</h3>
+                    <p class="text-gray-600">
+                        A modern and automated library system for digital cataloging, book tracking,
+                        member management, and smooth library operations.
+                    </p>
+                </div>
+
+                <!-- Enothi -->
+                <div class="card-bg p-8 rounded-2xl shadow-lg border border-gray-200
+                        transform hover:scale-105 transition-all duration-300 animate-fade-in-up"
+                     style="animation-delay: 0.4s;">
+                    <div class="text-primary text-5xl mb-4">
+                        <i class="fas fa-file-alt"></i>
+                    </div>
+                    <h3 class="text-2xl font-semibold text-gray-900 mb-3">Enothi (E-File & Document Management System)</h3>
+                    <p class="text-gray-600">
+                        A complete digital file movement and document management platform designed to
+                        modernize traditional paper-based workflows. Enothi ensures efficient file tracking,
+                        automated approvals, document archiving, and secure digital storage. It helps
+                        organizations streamline operations,
+                        reduce processing delays, and maintain full transparency across departments.
+                    </p>
+                </div>
+
+                <!-- Result Processing Application -->
+                <div class="card-bg p-8 rounded-2xl shadow-lg border border-gray-200
+                        transform hover:scale-105 transition-all duration-300 animate-fade-in-up"
+                     style="animation-delay: 0.5s;">
+                    <div class="text-primary text-5xl mb-4">
+                        <i class="fas fa-chart-line"></i>
+                    </div>
+                    <div class="flex items-center gap-2 mb-3">
+                        <h3 class="text-2xl font-semibold text-gray-900">Result Processing Application</h3>
+                        <span class="bg-gradient-to-r from-purple-600 to-blue-600 text-white text-xs font-bold px-2.5 py-1 rounded-full">AI-Powered</span>
+                    </div>
+                    <p class="text-gray-600">
+                        A powerful AI-integrated exam result management system for educational institutions.
+                        Features intelligent mark entry validation, automated moderation, smart grading rules,
+                        predictive analytics for student performance, GPA/CGPA calculation, and AI-driven insights
+                        for academic improvement—built for accuracy, scalability, and data-driven decision-making.
+                    </p>
+                </div>
+
+                <!-- Book Distribution Management System -->
+                <div class="card-bg p-8 rounded-2xl shadow-lg border border-gray-200
+                        transform hover:scale-105 transition-all duration-300 animate-fade-in-up"
+                     style="animation-delay: 0.6s;">
+                    <div class="text-primary text-5xl mb-4">
+                        <i class="fas fa-truck"></i>
+                    </div>
+                    <h3 class="text-2xl font-semibold text-gray-900 mb-3">Book Distribution Management System</h3>
+                    <p class="text-gray-600">
+                        A comprehensive government project solution built for NCTB (National Curriculum and
+                        Textbook Board) to manage the entire textbook distribution lifecycle. Features include
+                        inventory tracking, distribution scheduling, delivery monitoring, and real-time reporting
+                        to ensure timely and efficient book delivery to educational institutions nationwide.
+                    </p>
+                </div>
+
+            </div>
+        </div>
+    </section>
+
+
     <style>
         /* simple fade + slide up for each item */
         @keyframes fadeUp {
@@ -192,9 +306,18 @@
                         </div>
 
                         <div class="bg-white p-6 rounded-xl shadow-lg border border-primary/20 stagger-item">
-                            <i class="fab fa-laravel text-4xl text-primary mb-2"></i>
-                            <p class="text-3xl font-bold text-gray-900">Laravel</p>
-                            <p class="text-gray-600">Primary Backend Stack</p>
+                            <div class="flex items-center gap-3 mb-2">
+                                <i class="fab fa-laravel text-3xl text-primary"></i>
+                                <i class="fab fa-node text-3xl text-primary"></i>
+                                <i class="fab fa-react text-3xl text-primary"></i>
+                            </div>
+                            <h3 class="text-xl font-bold text-gray-900 mb-1">
+                                Full Stack Development
+                            </h3>
+                            <p class="text-sm text-gray-700 mb-2">
+                                Laravel • Node.js • NestJS • Next.js • React
+                            </p>
+                            <p class="text-sm text-gray-600">Primary Backend & Frontend Stack</p>
                         </div>
 
                         <div class="bg-white p-6 rounded-xl shadow-lg border border-primary/20 stagger-item">
