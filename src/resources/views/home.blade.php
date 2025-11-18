@@ -462,7 +462,7 @@
                 </div>
 
                 <div class="lg:w-2/3 p-8 card-bg rounded-xl shadow-2xl border border-gray-200">
-                    <form id="contact-form" class="space-y-6">
+                    <form id="contact-form"  class="space-y-6">
                         @csrf
                         <div>
                             <label for="name" class="block text-sm font-medium text-gray-700 mb-2">Full Name</label>
